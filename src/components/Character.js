@@ -1,17 +1,14 @@
 // Write your Character component here
 import React from 'react'
-import Film from './Film';
+
 export default function Character(props) {
-   const names = props.movie   
+   const {movie} = props 
+   console.log (movie)
 return (      
-<div>
-   {
-names.map(function(film){
-   return (<p>{film}</p>) 
+<div>   
+{movie.map(function(film, id){
+   return (<p key={id}>{film}</p>) 
 })}
 </div>
-
 )
-
 }
-    

@@ -12,15 +12,15 @@ axios.get('https://swapi.dev/api/people')
     let data3 = res.data
     let data1 = data3["results"]
     let finalData =[];
-    for (let i=0; i<data1.length;i ++){
+    for (let i=0; i < data1.length;i ++){
       finalData.push(data1[i].name)
+  
     }
-   setdata(finalData)
-  console.log(finalData)
+    setdata(finalData)
 })
 .catch (err =>  console.error(err))
   
-}, )
+},[])
 
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
@@ -29,7 +29,7 @@ axios.get('https://swapi.dev/api/people')
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <Character movie = {data} />
+      {data && <Character movie = {data} />}
     </div>
   );
 }
