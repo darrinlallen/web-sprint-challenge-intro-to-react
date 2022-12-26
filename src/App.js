@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios'
 import './App.css'
 import Character from './components/Character';
@@ -6,12 +6,12 @@ import Character from './components/Character';
   // Try to think throsgh what state you'll need for this app before starting. Then build out
   // the state properties here.
   const [data, setdata] = useState([])
-  let isApi = true 
-useEffect(async() => {
+  let isApi = useRef(false)
+useEffect(()=> {
 axios.get('https://swapi.dev/api/people')
 .then ( res => {
 
-  if (isApi){
+  if (isApi.current === false){
   let arrNames = [];
   let movie = res.data
     for (let i=0; i < 10; i++){
@@ -19,9 +19,7 @@ axios.get('https://swapi.dev/api/people')
     }
     setdata(arrNames)
   }
-  return () => {
-    isApi = false;
-  }
+  
   })
 .catch (err =>  console.error(err))
   
@@ -35,7 +33,8 @@ axios.get('https://swapi.dev/api/people')
   
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <Character names = {data} />
+      <div>{data.map((film,id) => <p key={id}>{film}</p>)}</div>
+
     </div>
   );
   

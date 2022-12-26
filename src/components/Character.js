@@ -10,8 +10,7 @@ export default function Character(props) {
    
    return(
         
-   <div>{movies.map((film,id) => <p key={id}>{film}</p>)}</div>
-   
+null   
  )  
     
 }
