@@ -1,19 +1,17 @@
 // Write your Character component here
-import React, {useEffect} from 'react'
+import { render } from '@testing-library/react'
+import React, {useEffect, useState} from 'react'
 
 export default function Character(props) {
-   const finalData = props.name 
-   console.log (finalData)
-   useEffect(() =>{
-console.log(finalData)
-   })
-return (      
-<div>   
-{
+   const {finalData}= props
+  let movies = props.names
+
     
-   finalData.map(function(film, id){
-   return (<p key={id}>{film}</p>)})
-   }
-</div>
-)
+   
+   return(
+        
+   <div>{movies.map((film,id) => <p key={id}>{film}</p>)}</div>
+   
+ )  
+    
 }
