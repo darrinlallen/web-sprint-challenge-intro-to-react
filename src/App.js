@@ -33,7 +33,7 @@ axios.get('https://swapi.dev/api/people')
   
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <div>{data.map((film,id) => <p key={id}>{film}</p>)}</div>
+      <div>{data.map((film,id) => <p>{film}</p>)}</div>
 
     </div>
   );
