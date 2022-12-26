@@ -9,14 +9,14 @@ const App = () => {
 useEffect(() => {
 axios.get('https://swapi.dev/api/people')
 .then ( res => {
-    let data3 = res.data
-    let data1 = data3["results"]
-    let finalData =[];
-    for (let i=0; i < data1.length;i ++){
-      finalData.push(data1[i].name)
+  let finalData =[];
+  let movie = res.data
+    for (let i=0; i < 10;i ++){
+      finalData.push(movie["results"][i].name)
   
     }
     setdata(finalData)
+    console.log(res.data)
 })
 .catch (err =>  console.error(err))
   
@@ -27,9 +27,10 @@ axios.get('https://swapi.dev/api/people')
   // sync up with, if any.
 
   return (
+  
     <div className="App">
       <h1 className="Header">Characters</h1>
-      {data && <Character movie = {data} />}
+      { <Character name = {data} />}
     </div>
   );
 }
